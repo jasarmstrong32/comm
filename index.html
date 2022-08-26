@@ -4,10 +4,47 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
     <title>comments</title>
   </head>
   <body>
-    <div id="app"></div>
+  <div class="comment-display"></div>
+
+  <div class="comment-area">
+    <form>
+      <fieldset>
+        <legend>Leave a Comment!</legend>
+
+        <label for="name">Name: </label>
+        <input class="comment" type="text" id="name" required />
+
+        <label for="email">Email: </label>
+        <input class="comment" type="text" id="email" required />
+
+        <label for="comment-body">Comment: </label>
+        <textarea
+          name="comment-body"
+          id="comment-body"
+          cols="30"
+          rows="5"
+          required
+        ></textarea>
+
+        <label for="permission">
+          <input type="checkbox" id="permission" value="true" required />
+          Check this box to allow your comment to be posted
+        </label>
+        <button
+          class="submit"
+          id="submit"
+          type="submit"
+          onclick="postComment()"
+        >
+          Post Your Comment
+        </button>
+      </fieldset>
+    </form>
+  </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
