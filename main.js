@@ -15,6 +15,9 @@ const addComment = (ev)=>{
   let commentDisplay = document.querySelector('.comment-display');
   commentDisplay.textContent = '\n' + JSON.stringify(comments, '\t', 2);
 }
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('btn').addEventListener('click', addComment);
+});
 
 // const commentDisplay = document.querySelector('.comment-display');
 // function postComment() {
