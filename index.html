@@ -12,8 +12,7 @@
 
   <div class="comment-area">
     <form>
-      <fieldset>
-        <legend>Leave a Comment!</legend>
+        <h2>Leave a Comment!</h2>
 
         <label for="name">Name: </label>
         <input class="comment" type="text" id="name" required />
@@ -34,15 +33,9 @@
           <input type="checkbox" id="permission" value="true" required />
           Check this box to allow your comment to be posted
         </label>
-        <button
-          class="submit"
-          id="submit"
-          type="submit"
-          onclick="postComment()"
-        >
+        <button id="btn">
           Post Your Comment
         </button>
-      </fieldset>
     </form>
   </div>
     <script type="module" src="/main.js"></script>
