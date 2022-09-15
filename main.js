@@ -1,43 +1,41 @@
 let comments = [];
 
-const addComment = (ev)=>{
+const addComment = (ev) => {
   ev.preventDefault();
+
+  let today = new Date();
+
   let comment = {
-    name: document.getElementById('#name').value,
-    date: Date.now(),
-    email: document.getElementById('#email').value,
-    comm: document.getElementById('#comment-body').value
-  }
+    name: document.getElementById('name').value,
+    date:
+      today.getFullYear() +
+      '-' +
+      (today.getMonth() + 1) +
+      '-' +
+      today.getDate(),
+    email: document.getElementById('email').value,
+    comment: document.getElementById('comment-body').value,
+  };
   comments.push(comment);
+
   document.forms[0].reset();
 
-  console.warn('added', {comments} );
+  console.warn('added', { comments });
   let commentDisplay = document.querySelector('.comment-display');
   commentDisplay.textContent = '\n' + JSON.stringify(comments, '\t', 2);
-}
-document.addEventListener('DOMContentLoaded', ()=>{
+
+  localStorage.setItem('CommentList', JSON.stringify(comments));
+};
+document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn').addEventListener('click', addComment);
 });
 
-// const commentDisplay = document.querySelector('.comment-display');
-// function postComment() {
-//   commentDisplay.innerHTML = `<comment-comp></comment-comp>`
-// }
-// const button = document.getElementById('btn');
-// button.addEventListener('click', function (evt) {
-//   evt.preventDefault(); //keeps page from loading error message after submit
-//   postComment(); //function call for alerts
-//   window.location.reload(true); //reloads window after submit
-// });
 
-// run `node index.js` in the terminal
 
-// console.log(`Hello Node.js v${process.versions.node}!`);
-
-// const commentName = document.getElementById('#name').value;
-// const commentEmail = document.getElementById('#email').value;
-// const commentBody = document.getElementById('#comment-body').value;
-// const date = new Date();
+// const commentName = comment.name;
+// const commentEmail = comment.email;
+// const commentBody = comment.comment;
+// const date = comment.date;
 
 // const commentTemplate = document.createElement('template');
 // commentTemplate.innerHTML = `
@@ -67,7 +65,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 //         <p class='comment-name'></p>
 //         <p class='comment-email'></P>
 //         <p class='comment-dateTime'></p>
-//     </div>
+//       </div>
+//   </div>
 // `;
 
 // class CommentComp extends HTMLElement {
@@ -90,5 +89,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 // window.customElements.define('comment-comp', CommentComp);
 
-
-
+// commentDisplay.
