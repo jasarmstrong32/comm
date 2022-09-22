@@ -1,3 +1,18 @@
+import {
+  get,
+  set,
+  getMany,
+  setMany,
+  update,
+  del,
+  clear,
+  keys,
+  values,
+  entries,
+  createStore
+} from 'https://cdn.jsdelivr.net/npm/idb-keyval@5/dist/esm/index.js';
+
+
 let comments = [];
 
 const addComment = (ev) => {
@@ -22,14 +37,38 @@ const addComment = (ev) => {
 
   console.warn('added', { comments });
   let commentDisplay = document.querySelector('.comment-display');
+
   commentDisplay.textContent = '\n' + JSON.stringify(comments, '\t', 2);
 
   localStorage.setItem('CommentList', JSON.stringify(comments));
+
+  set('comments', comments)
+    .then(()=>{
+      console.log('comments')
+    })
+    .catch(console.warn);
+
+  get('comments')
+    .then((data)=>{
+      console.log(data);
+    })
+    .catch(console,warn);
+
+  let commentsToDisplay = localStorage.getItem('CommentList');
+
+  let display = commentsToDisplay.split()
+
+  [{"name":"Jasmine Armstrong","date":"2022-9-20","email":"Jasmine.Armstrong515@gmail.com","comment":"gtyhujikolp"},{"name":"Jasmine Armstrong","date":"2022-9-20","email":"Jasmine.Armstrong515@gmail.com","comment":"yuikolp\n./,nm,b"}]
+
+  console.log(commentsToDisplay);
+
 };
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn').addEventListener('click', addComment);
 });
 
+let commentList = localStorage.getItem('CommentList');
+console.log(commentList)
 
 
 // const commentName = comment.name;
